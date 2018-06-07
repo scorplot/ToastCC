@@ -14,7 +14,7 @@
 #define MiddleDurationTime 2.5
 #define LongDurationTime   3.5
 
-typedef void(^customViewCompletionBlock)();
+typedef void(^customViewCompletionBlock)(void);
 @interface CCToastSupport ()
 @property (nonatomic, strong) UIView* view;
 @property (nonatomic, strong) NSMutableArray *timerArray;
@@ -22,11 +22,15 @@ typedef void(^customViewCompletionBlock)();
 
 @end
 static  __strong CCToastSupport *_pointer;
-@implementation CCToastSupport 
+@implementation CCToastSupport {
+    UIWindow *toastWindow;
+}
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.superView = [[UIApplication sharedApplication].delegate window];
+        toastWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        toastWindow.windowLevel = UIWindowLevelAlert;
+        //        self.superView = toastWindow;
         self.timerArray = [NSMutableArray array];
         
     }
@@ -34,8 +38,9 @@ static  __strong CCToastSupport *_pointer;
 }
 - (void)show {
     _show = YES;
-    [self.superView addSubview:_view];
+    [toastWindow addSubview:_view];
     _pointer = self;
+    toastWindow.hidden = NO;
 }
 
 - (void)dissmiss {
@@ -61,6 +66,8 @@ static  __strong CCToastSupport *_pointer;
     for (NSTimer *t in self.timerArray) {
         [t invalidate];
     }
+    toastWindow = nil;
+    //    self.superView = nil;
 }
 - (CCToastSupport *)showInTime:(NSTimeInterval)time {
     [self show];
@@ -268,7 +275,7 @@ static Class _Nullable customViewClass = nil;
                 }
             };
             support.view = view;
-
+            
             return support;
         }
     }

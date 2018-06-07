@@ -31,14 +31,14 @@ typedef enum {
 
 // control CCToast show & dismiss
 @class CCToastSupport;
-typedef void(^CompletionBlock)(void);
+typedef void(^CCToastCompletionBlock)(void);
 
 @interface CCToastSupport : NSObject
 @property (nonatomic, strong, readonly) UIView* view; // the toast view
 @property (nonatomic, assign, readonly, getter=isShow) BOOL show;// get is showing
-@property (nonatomic, weak) UIView* superView;
+//@property (nonatomic, weak) UIView* superView;
 
-@property (nonatomic, copy) CompletionBlock completionBlock;
+@property (nonatomic, copy) CCToastCompletionBlock completionBlock;
 
 -(void)show;// make view showing ， if need keep showing ,you must refer it by yourself
 
