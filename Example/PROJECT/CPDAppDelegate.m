@@ -15,7 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //    [CCToastSupportFactory setCustomViewWithClassName:[FLLoadingView class]];
-    //    [[CCToastSupportFactory sharedInstance] setCustomViewWithClassName:[FLLoadingView class]];
+//        [[CCToastSupportFactory sharedInstance] setCustomViewWithClassName:[FLLoadingView class]];
     return YES;
 }
 

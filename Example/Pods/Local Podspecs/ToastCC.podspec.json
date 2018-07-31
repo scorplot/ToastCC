@@ -1,6 +1,6 @@
 {
   "name": "ToastCC",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "summary": "A short description of ToastCC.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/scorplot/ToastCC",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/scorplot/ToastCC",
-    "tag": "1.0.0"
+    "tag": "1.0.1"
   },
   "platforms": {
     "ios": "8.0"

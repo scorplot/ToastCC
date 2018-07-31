@@ -36,7 +36,7 @@ typedef void(^CCToastCompletionBlock)(void);
 @interface CCToastSupport : NSObject
 @property (nonatomic, strong, readonly) UIView* view; // the toast view
 @property (nonatomic, assign, readonly, getter=isShow) BOOL show;// get is showing
-//@property (nonatomic, weak) UIView* superView;
+@property (nonatomic, weak) UIView* superView;
 
 @property (nonatomic, copy) CCToastCompletionBlock completionBlock;
 

@@ -24,13 +24,30 @@ typedef void(^customViewCompletionBlock)(void);
 static  __strong CCToastSupport *_pointer;
 @implementation CCToastSupport {
     UIWindow *toastWindow;
+    BOOL _setSuperView;
+    __weak UIView* _superView;
+}
+
+- (UIView*)superView {
+    if (_setSuperView == NO) {
+        _setSuperView = YES;
+        
+        if (_superView == nil) {
+            toastWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            toastWindow.windowLevel = UIWindowLevelAlert;
+            toastWindow.hidden = NO;
+            _superView = toastWindow;
+        }
+    }
+    return _superView;
+}
+-(void)setSuperView:(UIView *)superView {
+    _setSuperView = YES;
+    _superView = superView;
 }
 - (instancetype)init {
     self = [super init];
     if (self) {
-        toastWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        toastWindow.windowLevel = UIWindowLevelAlert;
-        //        self.superView = toastWindow;
         self.timerArray = [NSMutableArray array];
         
     }
@@ -38,9 +55,8 @@ static  __strong CCToastSupport *_pointer;
 }
 - (void)show {
     _show = YES;
-    [toastWindow addSubview:_view];
+    [self.superView addSubview:_view];
     _pointer = self;
-    toastWindow.hidden = NO;
 }
 
 - (void)dissmiss {
@@ -67,7 +83,7 @@ static  __strong CCToastSupport *_pointer;
         [t invalidate];
     }
     toastWindow = nil;
-    //    self.superView = nil;
+    self.superView = nil;
 }
 - (CCToastSupport *)showInTime:(NSTimeInterval)time {
     [self show];

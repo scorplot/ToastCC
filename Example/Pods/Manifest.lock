@@ -1,5 +1,5 @@
 PODS:
-  - ToastCC (1.0.0)
+  - ToastCC (1.0.1)
 
 DEPENDENCIES:
   - ToastCC (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ToastCC: 789240c121f3aac5c29a8a1b573836a8bcde1d69
+  ToastCC: 50b372d497f590e824d931e8a4a02ede33267182
 
 PODFILE CHECKSUM: 47d4c1b5853f18a17954d2d71d66d6d66457e69c
 

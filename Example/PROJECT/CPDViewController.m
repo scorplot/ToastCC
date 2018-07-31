@@ -30,6 +30,8 @@
         case 0:
         {
             self.toast = [[CCToastSupportFactory sharedInstance] createLoading];
+            self.toast.superView = [UIApplication sharedApplication].delegate.window;
+
             [self.toast show];
 //                        self.toast = [[CCToastSupportFactory sharedInstance] createLoading];
 //                       self.toast.completionBlock = ^{
@@ -61,6 +63,7 @@
         {
             self.toast = [[CCToastSupportFactory sharedInstance] createLoadingWithMesssage:@"loading..." context:(__bridge void *)(self)];
             [self.toast show];
+            
         }
             break;
         case 1:
